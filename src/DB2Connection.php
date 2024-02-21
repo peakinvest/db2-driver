@@ -73,6 +73,20 @@ class DB2Connection extends Connection
         return new DB2Builder($this);
     }
 
+    protected function escapeString($value)
+    {
+        $binding = \strtr($value, [
+            chr(26) => '\\Z',
+            chr(8) => '\\b',
+            '"' => '\"',
+            "'" => "\'",
+            '\\' => '\\\\',
+        ]);
+
+        return "'".$binding."'";
+    }
+
+
     /**
      * @return \Illuminate\Database\Grammar
      */

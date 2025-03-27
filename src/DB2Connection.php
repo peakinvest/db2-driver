@@ -104,7 +104,7 @@ class DB2Connection extends Connection
             $defaultGrammar->setOffsetCompatibilityMode($this->config['offset_compatibility_mode']);
         }
 
-        return $this->withTablePrefix($defaultGrammar);
+        return $defaultGrammar;
     }
 
     /**

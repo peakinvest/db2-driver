@@ -92,7 +92,7 @@ class DB2Connection extends Connection
      */
     protected function getDefaultQueryGrammar()
     {
-        $defaultGrammar = new DB2QueryGrammar;
+        $defaultGrammar = new DB2QueryGrammar($this);
 
         // If a date format was specified in constructor
         if (array_key_exists('date_format', $this->config)) {
@@ -112,7 +112,7 @@ class DB2Connection extends Connection
      */
     protected function getDefaultSchemaGrammar(): \Illuminate\Database\Grammar
     {
-        return new DB2SchemaGrammar;
+        return new DB2SchemaGrammar($this);
     }
 
     /**

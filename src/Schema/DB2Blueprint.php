@@ -39,15 +39,13 @@ class DB2Blueprint extends Blueprint
     /**
      * Get the raw SQL statements for the blueprint.
      *
-     * @param  \Illuminate\Database\Connection  $connection
-     * @param  \Illuminate\Database\Schema\Grammars\Grammar  $grammar
      * @return array
      */
-    public function toSql(Connection $connection, Grammar $grammar)
+    public function toSql()
     {
-        $this->addReplyListEntryCommands($connection);
+        $this->addReplyListEntryCommands($this->connection);
 
-        return parent::toSql($connection, $grammar);
+        return parent::toSql();
     }
 
     /**

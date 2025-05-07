@@ -56,9 +56,11 @@ class DB2SchemaGrammar extends Grammar
     /**
      * Compile the query to determine the list of tables.
      *
-     * @return string
+     * @param  string|null  $schema
+     * @param  string  $table
+     * @return string|null
      */
-    public function compileTableExists()
+    public function compileTableExists($schema, $table)
     {
         return 'select * from information_schema.tables where table_schema = upper(?) and table_name = upper(?)';
     }

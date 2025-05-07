@@ -13,17 +13,18 @@ class DB2Builder extends Builder
      */
     public function hasTable($table): bool
     {
-        $sql = $this->grammar->compileTableExists($this, $table);
         $schemaTable = explode('.', $table);
-
+    
         if (count($schemaTable) > 1) {
             $schema = $schemaTable[0];
-            $table = $this->connection->getTablePrefix().$schemaTable[1];
+            $table = $this->connection->getTablePrefix() . $schemaTable[1];
         } else {
             $schema = $this->connection->getDefaultSchema();
-            $table = $this->connection->getTablePrefix().$table;
+            $table = $this->connection->getTablePrefix() . $table;
         }
-
+    
+        $sql = $this->grammar->compileTableExists($schema, $table);
+    
         return count($this->connection->select($sql, [
             $schema,
             $table,

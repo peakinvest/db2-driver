@@ -13,7 +13,7 @@ class DB2Builder extends Builder
      */
     public function hasTable($table): bool
     {
-        $sql = $this->grammar->compileTableExists();
+        $sql = $this->grammar->compileTableExists($this, $table);
         $schemaTable = explode('.', $table);
 
         if (count($schemaTable) > 1) {

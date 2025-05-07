@@ -83,6 +83,6 @@ class DB2Builder extends Builder
             return call_user_func($this->resolver, $table, $callback);
         }
 
-        return new DB2Blueprint($table, $callback);
+        return new DB2Blueprint($this->connectio, $table, $callback);
     }
 }
